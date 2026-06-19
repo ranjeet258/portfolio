@@ -1,35 +1,728 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ranjeet's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Ranjeet Gupta - AI Engineer & Data Scientist</title>
+  <meta content="Portfolio of Ranjeet Gupta, AI Engineer and Data Scientist specializing in machine learning, deep learning, LLMs, and MLOps." name="description">
+  <meta content="Ranjeet Gupta, AI Engineer, Machine Learning, Deep Learning, MLOps, Data Scientist, NIT Jamshedpur" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      }
+    }
+  </script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Styling for active links added by Scrollspy */
+    .navmenu ul li a.active {
+      color: #f4f4f5 !important; /* text-zinc-100 */
+      background-color: rgba(39, 39, 42, 0.4) !important; /* bg-zinc-800/40 */
+      border-left-color: #8b5cf6 !important; /* border-violet-500 */
+    }
+    .navmenu ul li a.active i {
+      color: #a78bfa !important; /* text-violet-400 */
+    }
+    .navmenu ul li a.active span {
+      color: #f4f4f5 !important;
+    }
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Ranjeet's Portfolio</h1>
-        <p>AI & Robotics Enthusiast | Problem Solver | NIT Jamshedpur</p>
-    </header>
-    
-    <section id="about">
+
+<body class="index-page">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-theme');
+    }
+  </script>
+
+  <header id="header" class="header">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center w-full">
+      <!-- Profile Picture Container -->
+      <div class="relative group mt-1">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+        <img class="relative w-20 h-20 rounded-full object-cover border-2 border-zinc-800" src="assets/img/my-profile-img.JPG" alt="Ranjeet Gupta">
+        <span class="absolute bottom-0 right-1 w-4 h-4 bg-emerald-500 border-2 border-[#111111] rounded-full"></span>
+      </div>
+      
+      <!-- Name & Role -->
+      <h2 class="text-zinc-100 font-bold text-lg mt-3">Ranjeet Gupta</h2>
+      <p class="text-zinc-500 text-xs font-semibold uppercase tracking-wider mt-1">AI Engineer</p>
+
+      <!-- Social Media Handles (Placed below AI Engineer, no NIT JSR) -->
+      <div class="flex items-center justify-center gap-2 mt-3 w-full">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/ranjeet-gupta-9a705827b/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-blue-700 hover:text-white flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="LinkedIn">
+          <i class="fa-brands fa-linkedin-in text-xs"></i>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/ranjeet258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-zinc-100 hover:text-zinc-950 flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="GitHub">
+          <i class="fa-brands fa-github text-xs"></i>
+        </a>
+        <!-- Medium -->
+        <a href="https://medium.com/@ranjeetkrgupta258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-zinc-100 hover:text-zinc-950 flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="Medium">
+          <i class="fa-brands fa-medium text-xs"></i>
+        </a>
+        <!-- Kaggle -->
+        <a href="https://www.kaggle.com/ranjeet258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-blue-400 hover:text-white flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="Kaggle">
+          <i class="fa-brands fa-kaggle text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="w-full h-px bg-zinc-800/40 my-4"></div>
+    </div>
+
+    <!-- Navigation Menu (Dropdown item removed) -->
+    <nav id="navmenu" class="navmenu w-full flex-1">
+      <ul class="space-y-1 list-none p-0 m-0">
+        <li>
+          <a href="#hero" class="active group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-house text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-user text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">About</span>
+          </a>
+        </li>
+        <li>
+          <a href="#resume" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-file-invoice text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#portfolio" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-image text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-envelope text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Bottom Part: Status / Copyright -->
+    <div class="w-full flex flex-col gap-2.5 mt-auto">
+      <div class="w-full h-px bg-zinc-800/40 mb-1"></div>
+      <div class="flex items-center justify-between px-2 w-full">
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase">Open for Roles</span>
+        </div>
+        <span class="text-[9px] bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full font-mono">v1.0.0</span>
+      </div>
+      
+      <!-- Theme Toggle Switch -->
+      <div class="flex items-center justify-between px-2 w-full mt-1 border-t border-zinc-800/40 pt-2.5">
+        <span class="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase">Theme</span>
+        <button id="theme-toggle" class="btn btn-sm text-zinc-400 hover:text-zinc-100 focus:outline-none p-1 border-0 bg-transparent cursor-pointer" title="Toggle Light/Dark Mode">
+          <i class="bi bi-moon-fill text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h2>Ranjeet Gupta</h2>
+        <p>I'm <span class="typed" data-typed-items="AI Engineer, Machine Learning Engineer, Data Scientist, MLOps Specialist">AI Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
         <h2>About Me</h2>
-        <p>I am a student at NIT Jamshedpur, passionate about AI, robotics, and solving critical problems.</p>
-    </section>
+        <p>AI Engineer specializing in production-grade deep learning, Generative AI systems, and automated MLOps pipelines.</p>
+      </div><!-- End Section Title -->
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Portable NPK Test Kit</strong> - AI-based agriculture testing system.</li>
-            <li><strong>Raspberry Pi Autonomous Bot</strong> - Built using AI & IoT.</li>
-            <li><strong>Machine Learning Model</strong> - Trained for image recognition.</li>
-        </ul>
-    </section>
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-    <section id="contact">
+        <!-- Outer Boundary for About Section -->
+        <div class="p-4 rounded-3xl bg-zinc-900/40 border border-zinc-800/80 transition-all duration-300 hover:border-zinc-600/40">
+          <div class="row gy-4 p-2">
+
+            <!-- Left Column: Professional Summary & Core Skills -->
+            <div class="col-lg-5 content d-flex flex-column gap-4">
+
+              <!-- Education -->
+              <div class="p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 transition-all duration-300 hover:border-violet-500/40">
+                <h3 class="text-lg font-bold text-white mb-2"><i class="bi bi-mortarboard-fill text-violet-400 me-2"></i> Education</h3>
+                <ul class="text-sm text-zinc-400 space-y-2 ps-0 list-none mb-0">
+                  <li class="d-flex align-items-start"><i class="bi bi-check2-circle text-violet-400 me-2 mt-1"></i> <span><strong>University:</strong> National Institute of Technology, Jamshedpur (Course: B.Tech)</span></li>
+                  <li class="d-flex align-items-start"><i class="bi bi-check2-circle text-violet-400 me-2 mt-1"></i> <span><strong>Higher Secondary:</strong> Akanksha 40, JAC Board (92%)</span></li>
+                  <li class="d-flex align-items-start"><i class="bi bi-check2-circle text-violet-400 me-2 mt-1"></i> <span><strong>Secondary Education:</strong> Model School (90%)</span></li>
+                </ul>
+              </div>
+
+              <!-- Core Skills -->
+              <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 transition-all duration-300 hover:border-emerald-500/40">
+                <h3 class="text-lg font-bold text-white mb-3"><i class="bi bi-code-slash text-emerald-400 me-2"></i> Core Skills</h3>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="tech-badge-xs tech-badge-emerald">Python</span>
+                  <span class="tech-badge-xs tech-badge-emerald">C/C++</span>
+                  <span class="tech-badge-xs tech-badge-emerald">SQL</span>
+                  <span class="tech-badge-xs tech-badge-purple">Machine Learning</span>
+                  <span class="tech-badge-xs tech-badge-purple">Deep Learning</span>
+                  <span class="tech-badge-xs tech-badge-purple">Computer Vision</span>
+                  <span class="tech-badge-xs tech-badge-purple">Agentic &amp; Gen AI</span>
+                  <span class="tech-badge-xs tech-badge-orange">PyTorch</span>
+                  <span class="tech-badge-xs tech-badge-orange">TensorFlow</span>
+                  <span class="tech-badge-xs tech-badge-orange">LangChain/LangGraph</span>
+                  <span class="tech-badge-xs tech-badge-cyan">ETL &amp; Analytics</span>
+                  <span class="tech-badge-xs tech-badge-blue">AWS &amp; Azure</span>
+                  <span class="tech-badge-xs tech-badge-pink">Docker/Kubernetes</span>
+                  <span class="tech-badge-xs tech-badge-pink">MLOps &amp; CI/CD</span>
+                  <span class="tech-badge-xs tech-badge-pink">FastAPI</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Sentence and Paragraph -->
+            <div class="col-lg-7 content d-flex flex-column justify-content-center">
+              <h2 class="text-3xl font-bold text-white mb-4">AI/ML Enthusiast</h2>
+              <p class="text-zinc-300 leading-relaxed text-lg mb-4">
+              I'm Ranjeet Gupta, a B.Tech student at NIT Jamshedpur with a strong passion for Artificial Intelligence, Machine Learning, and Data Science. I enjoy building intelligent systems that combine LLMs, RAG pipelines, multi-agent architectures, and predictive analytics to solve real-world problems. My experience spans AI research, statistical modeling, computer vision, and autonomous robotic systems. I have worked on projects ranging from multimodal AI assistants and Hybrid RAG systems to foundation models and advanced deep learning architectures. I am driven by curiosity, innovation, and the goal of creating impactful AI solutions that bridge research and practical applications.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+<!-- Resume Section -->
+    <section id="resume" class="resume section">
+
+      <!-- Section Title -->
+      <div class="container section-title pb-2" data-aos="fade-up">
+        <h2>Experience</h2>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
+            
+            <div class="d-flex flex-column gap-3">
+              <!-- Item 1 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 transition-all duration-300 hover:border-violet-500/40">
+                <div class="d-flex justify-content-between align-items-start mb-2 flex-column flex-sm-row gap-2">
+                  <h4 class="text-xl font-bold text-white mb-0">Intern</h4>
+                  <span class="text-xs font-mono px-3 py-1 bg-violet-500/10 text-violet-400 rounded-full border border-violet-500/20">Oct 2024 – Jan 2025</span>
+                </div>
+                <p class="text-zinc-300 font-medium mb-3 text-sm"><i class="bi bi-building text-zinc-500 me-2"></i>IIT Hyderabad Sponsored Research Project</p>
+                <ul class="text-sm text-zinc-400 space-y-2 ps-3 mb-0" style="list-style-type: circle;">
+                  <li>Modeled complex vehicle dynamics using data-driven statistical analysis and advanced optimization techniques.</li>
+                  <li>Applied optimization methods to enhance locomotion stability and optimize flapping frequency responses.</li>
+                  <li>Analyzed and validated experimental data streams to verify predictive system behavior and control accuracy.</li>
+                </ul>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 transition-all duration-300 hover:border-emerald-500/40">
+                <div class="d-flex justify-content-between align-items-start mb-2 flex-column flex-sm-row gap-2">
+                  <h4 class="text-xl font-bold text-white mb-0">Co-Founder</h4>
+                  <span class="text-xs font-mono px-3 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">Aug 2023 – Present</span>
+                </div>
+                <p class="text-zinc-300 font-medium mb-3 text-sm"><i class="bi bi-building text-zinc-500 me-2"></i>AI and Automation Club, NIT Jamshedpur</p>
+                <ul class="text-sm text-zinc-400 space-y-2 ps-3 mb-0" style="list-style-type: circle;">
+                  <li>Co-founded a research-oriented student club focusing on machine learning and intelligent automation systems.</li>
+                  <li>Mentored 100+ students on machine learning pipelines, deep learning frameworks, and computer vision architectures.</li>
+                  <li>Directed the design and development of end-to-end computer vision and embedded AI proof-of-concepts.</li>
+                </ul>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 transition-all duration-300 hover:border-blue-500/40">
+                <div class="d-flex justify-content-between align-items-start mb-2 flex-column flex-sm-row gap-2">
+                  <h4 class="text-xl font-bold text-white mb-0">Intern</h4>
+                  <span class="text-xs font-mono px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/20">May – June 2025</span>
+                </div>
+                <p class="text-zinc-300 font-medium mb-3 text-sm"><i class="bi bi-building text-zinc-500 me-2"></i>Gargs Engineering Limited</p>
+                <ul class="text-sm text-zinc-400 space-y-2 ps-3 mb-0" style="list-style-type: circle;">
+                  <li>Performed deep statistical analysis and cost structure evaluations to optimize manufacturing operations.</li>
+                  <li>Developed interactive dashboards (Power BI/Tableau) to analyze material flow and revenue trends.</li>
+                  <li>Applied design optimization principles and statistical modeling for continuous product improvement.</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Resume Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title pb-2" data-aos="fade-up">
+        <h2>Projects &amp; Patents</h2>
+        <p>Intellectual property, published patents, and academic research projects in Artificial Intelligence and Machine Learning.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <!-- Outer Boundary for Portfolio Section -->
+        <div class="p-4 rounded-3xl bg-zinc-900/40 border border-zinc-800/80 transition-all duration-300 hover:border-zinc-600/40">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <div class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+            <ul class="portfolio-filters isotope-filters d-inline-flex justify-content-center flex-wrap bg-zinc-900/50 border border-zinc-800/80 rounded-pill p-2 m-0 shadow-sm">
+              <li data-filter="*" class="filter-active px-3 py-1 m-0 rounded-pill transition-all">All</li>
+              <li data-filter=".filter-agentic-ai" class="px-3 py-1 m-0 rounded-pill transition-all hover:text-violet-400">Agentic &amp; Gen AI</li>
+              <li data-filter=".filter-ml-dl" class="px-3 py-1 m-0 rounded-pill transition-all hover:text-violet-400">ML &amp; DL</li>
+              <li data-filter=".filter-data-analysis" class="px-3 py-1 m-0 rounded-pill transition-all hover:text-violet-400">Data Analysis</li>
+            </ul>
+          </div><!-- End Portfolio Filters -->
+
+          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/BusinessIQ.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="BusinessIQ Platform">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/BusinessIQ.png" title="BusinessIQ: Agentic AI Platform" data-gallery="portfolio-gallery-agentic-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="https://github.com/ranjeet258/BusinessIQ.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">BusinessIQ</h4>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-2">Agentic AI Platform for Analytics, RAG, and WhatsApp Marketing Automation.</p>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Approach:</span> Multi-agent architecture using LLMs for SQL translation, vector databases for RAG, and automated routing for WhatsApp workflows.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai filter-ml-dl">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/Robotic-Head.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Multimodal AI Perception System">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/Robotic-Head.png" title="Multimodal AI System" data-gallery="portfolio-gallery-ml-dl" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="#" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">Multimodal AI System</h4>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-2">Patent Under Review (2026). End-to-end perception system integrating computer vision (YOLO) and speech processing (STT/TTS).</p>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Approach:</span> Fused YOLO-based real-time object detection with advanced STT/TTS pipelines to enable natural human-machine interactions.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml-dl">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/Recommender-system-for-movie.jpg" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Movie Recommender System">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/Recommender-system-for-movie.jpg" title="Movie Recommender System" data-gallery="portfolio-gallery-ml-dl" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="https://github.com/ranjeet258/Movie-Recommender-System" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">Movie Recommender System</h4>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-2">A content-based filtering recommender that suggests similar movies using NLP and cosine similarity on the TMDB 5000 dataset.</p>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Approach:</span> Extracted features using NLP techniques (TF-IDF/CountVectorizer) and computed cosine similarity matrices to rank and suggest similar content.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-data-analysis">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/Car_Data_analysis.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Used Car Sales Data Analysis">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/Car_Data_analysis.png" title="Car Sales Data Analysis" data-gallery="portfolio-gallery-data-analysis" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="https://github.com/ranjeet258/Tableau_Used-Car-Analysis.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">Used Car Sales Dashboard</h4>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0">
+                    <p class="mb-2">An interactive Tableau dashboard analyzing used car sales data to uncover insights on pricing trends, fuel types, and ownership patterns.</p>
+                    <p class="mb-2">It transforms raw automobile listings into clear, data-driven stories, helping stakeholders make informed decisions about inventory and market trends.</p>
+                  </div>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Approach:</span> Cleaned raw datasets, built relational models in Tableau, and designed interactive visualizations with dynamic filters.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-data-analysis">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/Motorola_Sales_DashBoard.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Mobile Smartphone Sales Dashboard">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/Motorola_Sales_DashBoard.png" title="Mobile Sales Dashboard" data-gallery="portfolio-gallery-data-analysis" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="https://github.com/ranjeet258/PowerBI_Motorola-Sales-Dashboard.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">Mobile Sales Dashboard</h4>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0">
+                    <p class="mb-2">A Power BI dashboard visualizing smartphone sales across India to highlight key business insights like total sales, payment trends, and top-performing models.</p>
+                    <p class="mb-2">It provides a comprehensive overview of customer demographics and regional distribution to drive data-informed business strategies.</p>
+                  </div>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Approach:</span> Ingested unstructured data into Power BI, performed DAX modeling, and developed interactive dashboards to track KPIs.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
+          </div><!-- End Portfolio Container -->
+
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
+
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Email: your_email@example.com</p>
-        <p>GitHub: <a href="https://github.com/YOUR_USERNAME">YOUR_USERNAME</a></p>
-    </section>
+        <p>Feel free to reach out for research collaboration, internship opportunities, or AI engineering roles.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+
+          <div class="col-lg-4 col-md-5 d-flex flex-column">
+
+            <div class="info-wrap h-full p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 shadow-2xl backdrop-blur-md flex flex-col">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>NIT Jamshedpur, Jharkhand, India</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Call me</h3>
+                  <p>+91 7858823496</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email me</h3>
+                  <p>ranjeetkrgupta258@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                <i class="bi bi-github flex-shrink-0"></i>
+                <div>
+                  <h3>GitHub</h3>
+                  <p><a href="https://github.com/ranjeet258" target="_blank" style="color: #a1a1aa; text-decoration: none;" onmouseover="this.style.color='#8b5cf6'" onmouseout="this.style.color='#a1a1aa'">github.com/ranjeet258</a></p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.1176214532463!2d86.1419799!3d22.7765955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f5e49222222223%3A0x6b13e9a7e6bdf6a2!2sNational%20Institute%20of%20Technology%2C%20Jamshedpur!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin" frameborder="0" style="border:0; width: 100%; height: 200px; border-radius: 12px; margin-top: 15px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-7 d-flex flex-column" data-aos="fade-up" data-aos-delay="200">
+            <form action="forms/contact.php" method="post" class="php-email-form p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 shadow-2xl backdrop-blur-md h-full d-flex flex-column justify-content-center" style="border-radius: 1rem;">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2 text-sm text-zinc-300">Your Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control bg-zinc-950 text-sm focus:outline-none" style="border-radius: 0.75rem; background-color: #09090b; border-color: #27272a; color: #e4e4e7;" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2 text-sm text-zinc-300">Your Email</label>
+                  <input type="email" class="form-control bg-zinc-950 text-sm focus:outline-none" name="email" id="email-field" style="border-radius: 0.75rem; background-color: #09090b; border-color: #27272a; color: #e4e4e7;" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2 text-sm text-zinc-300">Subject</label>
+                  <input type="text" class="form-control bg-zinc-950 text-sm focus:outline-none" name="subject" id="subject-field" style="border-radius: 0.75rem; background-color: #09090b; border-color: #27272a; color: #e4e4e7;" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2 text-sm text-zinc-300">Message</label>
+                  <textarea class="form-control bg-zinc-950 text-sm focus:outline-none" name="message" rows="6" id="message-field" style="border-radius: 0.75rem; background-color: #09090b; border-color: #27272a; color: #e4e4e7;" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center mt-4">
+                  <button type="submit" class="w-full py-2.5 px-4 text-white font-semibold text-sm border-0 cursor-pointer transition-all duration-300" style="border-radius: 0.75rem; background-color: #7c3aed;">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer position-relative py-2 pb-4">
+
+    <div class="container d-flex justify-content-center">
+      <div class="px-4 py-2 rounded-full bg-zinc-900/40 border border-zinc-800/80 transition-all duration-300 hover:border-zinc-600/40 text-center" style="max-width: 500px; width: 100%;">
+        <div class="copyright">
+          <p class="mb-0 text-zinc-400 text-sm">© <span>Copyright</span> <strong class="px-1 text-white">Ranjeet Gupta</strong> <span>All Rights Reserved</span></p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Floating Chatbot Widget -->
+  <div id="chatbot-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    
+    <!-- Chat Window Panel -->
+    <div id="chat-window" class="hidden w-[360px] h-[480px] bg-zinc-950/95 border border-zinc-800/80 rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex-col overflow-hidden mb-4 backdrop-blur-md transition-all duration-300">
+      
+      <!-- View 1: Support Home Screen -->
+      <div id="chat-home-view" class="flex flex-col h-full bg-zinc-950">
+        <!-- Home Header -->
+        <div class="p-4 bg-gradient-to-r from-violet-600 to-indigo-600 flex flex-col justify-between border-b border-zinc-800/60 relative shrink-0">
+          <button id="close-chat-home" class="absolute top-4 right-4 text-zinc-200 hover:text-white p-1 border-0 bg-transparent cursor-pointer transition-all" title="Close">
+            <i class="bi bi-x-lg text-xs"></i>
+          </button>
+          
+          <div class="flex items-center gap-2.5 mb-3">
+            <div class="flex -space-x-2 shrink-0">
+              <img class="w-8 h-8 rounded-full border-2 border-violet-600 object-cover" src="assets/img/my-profile-img.JPG" alt="Ranjeet Gupta">
+              <div class="w-8 h-8 rounded-full border-2 border-violet-600 bg-zinc-900 flex items-center justify-center text-violet-400 text-xs font-bold font-mono">AI</div>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-white mb-0.5" style="font-family: var(--heading-font);">Ranjeet's Support Assistant</h4>
+              <div class="flex items-center gap-1">
+                <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span>
+                <span class="text-[9px] text-violet-100">Ranjeet &amp; AI Agent are online</span>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="text-base font-bold text-white mt-1 mb-1">Hello! 👋</h3>
+          <p class="text-xs text-violet-100 mb-0">Ask our AI or explore key portfolio sections below.</p>
+        </div>
+
+        <!-- Home Content (Scrollable area) -->
+        <div class="flex-1 p-4 overflow-y-auto space-y-4 flex flex-col" style="scrollbar-width: none;">
+          <!-- Chat Card -->
+          <div class="p-3.5 rounded-xl bg-zinc-900 border border-zinc-800/80 flex flex-col gap-3">
+            <div>
+              <h5 class="text-xs font-bold text-zinc-100 mb-1">Start a Conversation</h5>
+              <p class="text-[10px] text-zinc-400 leading-normal mb-0">Get instant answers about Ranjeet's academic background, research papers, and technical skills.</p>
+            </div>
+            <button id="btn-start-chat" class="w-full py-2 px-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs border-0 cursor-pointer flex items-center justify-center gap-2 transition-all active:scale-95">
+              <i class="bi bi-chat-text-fill"></i>
+              <span>Send us a message</span>
+            </button>
+          </div>
+
+          <!-- Shortcuts Card -->
+          <div class="rounded-xl bg-zinc-900 border border-zinc-800/80 overflow-hidden flex flex-col">
+            <div class="p-2.5 bg-zinc-950/40 border-b border-zinc-800/60">
+              <span class="text-[9px] text-zinc-400 font-bold uppercase tracking-wider">Quick Navigation</span>
+            </div>
+            
+            <!-- Direct Message option -->
+            <button id="btn-send-msg" class="w-full text-left p-3 bg-transparent hover:bg-zinc-800/40 border-0 border-b border-zinc-800/60 transition-all flex items-center gap-3 cursor-pointer group">
+              <div class="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <i class="bi bi-envelope-fill text-sm"></i>
+              </div>
+              <div class="flex-1">
+                <h6 class="text-xs font-bold text-zinc-200 mb-0 group-hover:text-emerald-400 transition-all">Send a Direct Message</h6>
+              </div>
+              <i class="bi bi-chevron-right text-zinc-600 group-hover:text-zinc-400 text-xs transition-all"></i>
+            </button>
+
+            <!-- Skills Option -->
+            <button id="btn-view-skills" class="w-full text-left p-3 bg-transparent hover:bg-zinc-800/40 border-0 border-b border-zinc-800/60 transition-all flex items-center gap-3 cursor-pointer group">
+              <div class="w-8 h-8 rounded-lg bg-indigo-600/20 text-indigo-400 flex items-center justify-center shrink-0">
+                <i class="bi bi-gem text-sm"></i>
+              </div>
+              <div class="flex-1">
+                <h6 class="text-xs font-bold text-zinc-200 mb-0 group-hover:text-indigo-400 transition-all">View Skills &amp; Expertise</h6>
+              </div>
+              <i class="bi bi-chevron-right text-zinc-600 group-hover:text-zinc-400 text-xs transition-all"></i>
+            </button>
+
+            <!-- Projects Option -->
+            <button id="btn-view-projects" class="w-full text-left p-3 bg-transparent hover:bg-zinc-800/40 border-0 transition-all flex items-center gap-3 cursor-pointer group">
+              <div class="w-8 h-8 rounded-lg bg-amber-600/20 text-amber-400 flex items-center justify-center shrink-0">
+                <i class="bi bi-folder-fill text-sm"></i>
+              </div>
+              <div class="flex-1">
+                <h6 class="text-xs font-bold text-zinc-200 mb-0 group-hover:text-amber-400 transition-all">Browse My Projects</h6>
+              </div>
+              <i class="bi bi-chevron-right text-zinc-600 group-hover:text-zinc-400 text-xs transition-all"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Home Footer -->
+        <div class="p-3 border-t border-zinc-800/60 flex items-center justify-center bg-zinc-900/20 shrink-0">
+          <span class="text-[9px] text-zinc-600 font-mono">Typically replies instantly • AI Powered</span>
+        </div>
+      </div>
+
+      <!-- View 2: Chatbot Conversation Screen (Hidden by default) -->
+      <div id="chat-conv-view" class="hidden flex-col h-full">
+        <!-- Chat Header -->
+        <div class="p-3 bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-between border-b border-zinc-800/60">
+          <div class="flex items-center gap-2">
+            <button id="chat-back" class="text-zinc-200 hover:text-white p-1 border-0 bg-transparent cursor-pointer flex items-center justify-center" title="Back to Home">
+              <i class="bi bi-chevron-left text-sm font-bold"></i>
+            </button>
+            <div class="relative flex items-center">
+              <div class="w-8 h-8 rounded-full bg-zinc-900/60 border border-zinc-700/40 flex items-center justify-center text-zinc-100 font-semibold text-xs shrink-0">RG</div>
+              <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-zinc-950 rounded-full"></span>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-white mb-0" style="font-family: var(--heading-font);">Ranjeet's AI Assistant</h4>
+              <span class="text-[9px] text-zinc-200">Online &bull; Ask me anything</span>
+            </div>
+          </div>
+          <button id="close-chat-conv" class="text-zinc-200 hover:text-white p-1 border-0 bg-transparent cursor-pointer" title="Close Chat">
+            <i class="bi bi-x-lg text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Chat Messages List -->
+        <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-3 flex flex-col text-xs" style="scrollbar-width: none;">
+          <!-- Bot Greeting Message -->
+          <div class="chat-msg bot-msg d-flex align-items-start gap-2">
+            <div class="w-7 h-7 rounded-full bg-zinc-900/60 border border-zinc-800 flex items-center justify-center text-[10px] text-violet-400 font-bold shrink-0">AI</div>
+            <div class="p-2.5 rounded-2xl bg-zinc-900 border border-zinc-800/60 text-zinc-300 max-w-[80%] leading-relaxed">
+              Hi there! I'm Ranjeet's AI Assistant. Ask me anything about his projects, skills, education, or experience!
+            </div>
+          </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typing-indicator" class="hidden px-3 py-2 text-[10px] text-zinc-500 italic d-flex align-items-center gap-1.5 shrink-0">
+          <span class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce"></span>
+          <span class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+          <span class="w-1.5 h-1.5 bg-zinc-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+          <span>AI is typing...</span>
+        </div>
+
+        <!-- Chat Input Field -->
+        <div class="p-2.5 bg-zinc-900/60 border-t border-zinc-800/60 flex items-center gap-2">
+          <input id="chat-input" type="text" class="flex-1 bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-violet-500/60 placeholder-zinc-600" placeholder="Ask about Ranjeet...">
+          <button id="send-chat" class="w-8.5 h-8.5 rounded-xl bg-violet-600 hover:bg-violet-500 text-white flex items-center justify-center border-0 cursor-pointer shrink-0 transition-all duration-300 active:scale-95" title="Send Message">
+            <i class="bi bi-send-fill text-xs"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Launcher Toggle Button -->
+    <button id="chat-launcher" class="w-12 h-12 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white flex items-center justify-center shadow-[0_8px_30px_rgba(124,58,237,0.4)] hover:shadow-[0_8px_30px_rgba(124,58,237,0.6)] border-0 cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95" title="Chat with Ranjeet's AI">
+      <i class="bi bi-chat-dots-fill text-xl transition-all duration-300"></i>
+    </button>
+
+  </div>
+
 </body>
+
 </html>
