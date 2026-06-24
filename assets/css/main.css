@@ -1710,3 +1710,31 @@ body.light-theme #chat-home-view .bi-chevron-right {
 body.light-theme #chat-home-view button:hover .bi-chevron-right {
   color: #52525b !important;
 }
+
+/* Hero Chat Section Light Theme Overrides */
+body.light-theme #hero-chat-wrapper {
+  background-color: #f0f4f9 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+body.light-theme #hero-chat-wrapper:hover {
+  background-color: #e8eaed !important;
+}
+body.light-theme #hero-chat-input {
+  color: #09090b !important;
+}
+body.light-theme #hero-chat-input::placeholder {
+  color: #71717a !important; /* zinc-500 */
+}
+body.light-theme #hero-chat-send:hover {
+  background-color: #d4d4d8 !important;
+  color: #09090b !important;
+}
+body.light-theme .bot-text-content {
+  color: #09090b !important;
+}
+body.light-theme #hero-chat-messages .bg-\[\#1e1f20\] {
+  background-color: #f0f4f9 !important;
+  color: #09090b !important;
+}
+

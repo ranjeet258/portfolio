@@ -248,6 +248,19 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  // Allow sidebar navigation to work even if chat has hidden sections
+  document.querySelectorAll('.navmenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      // If chat hid the sections, restore them
+      document.querySelectorAll('main > section:not(#hero)').forEach(s => s.classList.remove('hidden'));
+      const footer = document.querySelector('#footer');
+      if (footer) footer.classList.remove('hidden');
+      
+      // Restore scrolling
+      document.body.style.overflow = '';
+    });
+  });
+
   /**
    * Chatbot Widget Interactivity & Mock Response
    */
@@ -500,7 +513,7 @@
       showContactTyping();
       setTimeout(() => {
         hideContactTyping();
-        appendContactMsg('bot', `Nice to meet you, ${contactData.name}! What is your email address so Ranjeet can reply to you?`);
+        appendContactMsg('bot', `Nice to meet you, ${contactData.name}! What is your email address so I can reply to you?`);
       }, 1000);
 
     } else if (contactStepNum === 2) {
@@ -537,7 +550,7 @@
       showContactTyping();
       setTimeout(() => {
         hideContactTyping();
-        appendContactMsg('bot', "Perfect. Go ahead and type the message you'd like to send to Ranjeet.");
+        appendContactMsg('bot', "Perfect. Go ahead and type the message you'd like to send to me.");
       }, 1000);
 
     } else if (contactStepNum === 4) {
@@ -551,28 +564,34 @@
 
       showContactTyping();
 
-      const urlParams = new URLSearchParams();
-      urlParams.append('name', contactData.name);
-      urlParams.append('email', contactData.email);
-      urlParams.append('subject', contactData.subject);
-      urlParams.append('message', contactData.message);
+      const formData = {
+        access_key: "2ef2f9d9-8993-488b-9f63-6d4745324ffc",
+        name: contactData.name,
+        email: contactData.email,
+        subject: contactData.subject,
+        message: contactData.message
+      };
 
-      fetch('forms/contact.php', {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: urlParams
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
       })
-      .then(response => {
+      .then(response => response.json())
+      .then(data => {
         hideContactTyping();
-        if (response.ok) {
-          appendContactMsg('bot', `Thank you! Your message has been sent successfully. Ranjeet will get in touch with you at <strong>${contactData.email}</strong>. Have a great day!`);
+        if (data.success) {
+          appendContactMsg('bot', `Thank you! Your message has been sent successfully. I will get in touch with you at <strong>${contactData.email}</strong>. Have a great day!`);
         } else {
-          appendContactMsg('bot', `Thank you! Your message has been sent successfully. Ranjeet will get in touch with you at <strong>${contactData.email}</strong>. Have a great day!`);
+          appendContactMsg('bot', `Oops! Something went wrong while sending your message. Please try again later.`);
         }
       })
       .catch(err => {
         hideContactTyping();
-        appendContactMsg('bot', `Thank you! Your message has been sent successfully. Ranjeet will get in touch with you at <strong>${contactData.email}</strong>. Have a great day!`);
+        appendContactMsg('bot', `Oops! A network error occurred while sending your message. Please try again later.`);
       });
     }
   }
@@ -601,6 +620,150 @@
 
   if (contactSend) {
     contactSend.addEventListener('click', handleContactSend);
+  }
+
+  /**
+   * Gemini-Style Integrated Hero Chat Logic
+   */
+  const heroChatInput = document.querySelector('#hero-chat-input');
+  const heroChatSend = document.querySelector('#hero-chat-send');
+  
+  const heroSection = document.querySelector('#hero');
+  const heroIntro = document.querySelector('#hero-intro');
+  const heroInputContainer = document.querySelector('#hero-input-container');
+  const heroChatMessages = document.querySelector('#hero-chat-messages');
+
+  // Open Integrated Chat Mode
+  function openIntegratedChat(initialMessage = '') {
+    if (!heroSection || !heroChatMessages) return;
+    
+    // Hide all other sections and footer
+    document.querySelectorAll('main > section:not(#hero)').forEach(s => s.classList.add('hidden'));
+    const footer = document.querySelector('#footer');
+    if (footer) footer.classList.add('hidden');
+    
+    // Hide hero text (intro)
+    if (heroIntro) heroIntro.classList.add('hidden');
+    
+    // Expand hero to exactly full screen height and lock it so input stays at bottom
+    heroSection.classList.remove('min-h-[80vh]', 'justify-center');
+    heroSection.classList.add('h-screen', 'max-h-screen', 'overflow-hidden', 'justify-between');
+    
+    // Disable body scroll so it feels like a native app
+    document.body.style.overflow = 'hidden';
+
+    // Show the messages container
+    heroChatMessages.classList.remove('hidden');
+    heroChatMessages.classList.add('flex');
+    
+    // Move input box to the bottom
+    if (heroInputContainer) {
+      heroInputContainer.classList.remove('mt-10', 'max-w-2xl');
+      heroInputContainer.classList.add('mt-auto', 'mb-6', 'max-w-4xl');
+    }
+    
+    // Focus input
+    setTimeout(() => {
+      if (heroChatInput) heroChatInput.focus();
+    }, 100);
+
+    if (initialMessage.trim()) {
+      handleHeroChatSend(initialMessage);
+    }
+  }
+
+  // Append message to hero chat
+  function appendHeroChatMsg(sender, text, stream = false) {
+    if (!heroChatMessages) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('flex', 'gap-4');
+    
+    if (sender === 'user') {
+      msgDiv.classList.add('flex-row-reverse');
+      msgDiv.innerHTML = `
+        <div class="bg-[#1e1f20] px-5 py-3 rounded-3xl rounded-tr-sm text-zinc-200 text-base max-w-[85%] leading-relaxed whitespace-pre-wrap shadow-sm break-words">${text}</div>
+      `;
+      heroChatMessages.appendChild(msgDiv);
+      heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+    } else {
+      msgDiv.innerHTML = `
+        <div class="flex-1 text-zinc-200 text-base leading-relaxed max-w-[100%] whitespace-pre-wrap pt-1 bot-text-content">
+        </div>
+      `;
+      heroChatMessages.appendChild(msgDiv);
+      
+      const textContainer = msgDiv.querySelector('.bot-text-content');
+      
+      if (stream) {
+        let i = 0;
+        const words = text.split(' ');
+        const interval = setInterval(() => {
+          if (i < words.length) {
+            textContainer.textContent += (i > 0 ? ' ' : '') + words[i];
+            heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+            i++;
+          } else {
+            clearInterval(interval);
+          }
+        }, 40); // 40ms per word simulates Gemini's streaming speed
+      } else {
+        textContainer.textContent = text;
+        heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+      }
+    }
+  }
+
+  // Handle Hero Chat Send
+  function handleHeroChatSend(textOverride = null) {
+    const text = textOverride !== null ? textOverride : (heroChatInput ? heroChatInput.value.trim() : '');
+    if (!text) return;
+
+    if (!textOverride && heroChatInput) {
+      heroChatInput.value = '';
+    }
+
+    appendHeroChatMsg('user', text);
+    
+    if (heroChatMessages) {
+      heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+    }
+
+    // Mock Response
+    setTimeout(() => {
+      let reply = "I am currently building the AI brain for this chatbot. Until it's ready, please head over to the Contact section in the sidebar to send me a real message!";
+      appendHeroChatMsg('bot', reply, true);
+    }, 400); // Reduced delay to mimic fast time-to-first-token
+  }
+
+  // Listeners for Hero Chat Input
+  if (heroChatInput) {
+    heroChatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const text = heroChatInput.value;
+        heroChatInput.value = '';
+        
+        // If not already in full chat mode, open it with initial message
+        if (!heroSection.classList.contains('h-screen')) {
+          openIntegratedChat(text);
+        } else {
+          handleHeroChatSend(text);
+        }
+      }
+    });
+  }
+
+  if (heroChatSend) {
+    heroChatSend.addEventListener('click', () => {
+      const text = heroChatInput ? heroChatInput.value : '';
+      if (heroChatInput) heroChatInput.value = '';
+      
+      if (!heroSection.classList.contains('h-screen')) {
+        openIntegratedChat(text);
+      } else {
+        handleHeroChatSend(text);
+      }
+    });
   }
 
 })();

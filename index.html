@@ -166,11 +166,27 @@
   <main class="main">
 
     <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+    <section id="hero" class="hero section dark-background relative flex flex-col justify-center items-center min-h-screen transition-all duration-500">
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <!-- Chat Messages Container (Hidden initially) -->
+      <div id="hero-chat-messages" class="hidden w-full max-w-4xl mx-auto flex-1 overflow-y-auto px-4 pb-4 mt-6 pt-4 flex-col gap-6 z-10 relative" style="scrollbar-width: none;"></div>
+
+      <div id="hero-intro" class="container text-center transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
         <h2>Ranjeet Gupta</h2>
         <p>I'm <span class="typed" data-typed-items="AI Engineer, Machine Learning Engineer, Data Scientist, MLOps Specialist">AI Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+      </div>
+        
+      <!-- Central Chat Input Box -->
+      <div id="hero-input-container" class="mt-10 max-w-[830px] mx-auto w-full px-4 relative z-10 transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+        <div id="hero-chat-wrapper" class="bg-[#1e1f20] rounded-[32px] p-2 pr-3 pl-6 flex items-end min-h-[60px] border border-zinc-800/50 shadow-sm transition-all duration-300">
+          <textarea id="hero-chat-input" rows="1" placeholder="Ask me anything..." class="w-full bg-transparent border-0 text-zinc-200 py-3 focus:outline-none placeholder-zinc-500 text-base resize-none leading-relaxed" style="max-height: 200px; scrollbar-width: none;"></textarea>
+          <button id="hero-chat-send" class="w-10 h-10 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 flex items-center justify-center transition-all duration-300 ml-2 shrink-0 mb-1" title="Send">
+            <i class="bi bi-send-fill text-lg"></i>
+          </button>
+        </div>
+        <div class="text-center mt-3 transition-opacity hidden" id="gemini-disclaimer">
+          <span class="text-xs text-zinc-500">AI can make mistakes. Please verify important information.</span>
+        </div>
       </div>
 
     </section><!-- /Hero Section -->
@@ -484,7 +500,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Email me</h3>
-                  <p>ranjeetkrgupta258@gmail.com</p>
+                  <p>ranjeetgupta.work@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -565,20 +581,6 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
 
   <!-- Floating Chatbot Widget -->
   <div id="chatbot-container" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
@@ -730,6 +732,21 @@
     </button>
 
   </div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
 
