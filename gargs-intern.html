@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Ranjeet Gupta - AI Engineer & Data Scientist</title>
+  <meta content="Portfolio of Ranjeet Gupta, AI Engineer and Data Scientist specializing in machine learning, deep learning, LLMs, and MLOps." name="description">
+  <meta content="Ranjeet Gupta, AI Engineer, Machine Learning, Deep Learning, MLOps, Data Scientist, NIT Jamshedpur" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: {
+        preflight: false,
+      }
+    }
+  </script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* Styling for active links added by Scrollspy */
+    .navmenu ul li a.active {
+      color: #f4f4f5 !important; /* text-zinc-100 */
+      background-color: rgba(39, 39, 42, 0.4) !important; /* bg-zinc-800/40 */
+      border-left-color: #8b5cf6 !important; /* border-violet-500 */
+    }
+    .navmenu ul li a.active i {
+      color: #a78bfa !important; /* text-violet-400 */
+    }
+    .navmenu ul li a.active span {
+      color: #f4f4f5 !important;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-theme');
+    }
+  </script>
+
+  <header id="header" class="header">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center w-full">
+      <!-- Profile Picture Container -->
+      <div class="relative group mt-1">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
+        <img class="relative w-20 h-20 rounded-full object-cover border-2 border-zinc-800" src="assets/img/my-profile-img.jpg" alt="Ranjeet Gupta">
+        <span class="absolute bottom-0 right-1 w-4 h-4 bg-emerald-500 border-2 border-[#111111] rounded-full"></span>
+      </div>
+      
+      <!-- Name & Role -->
+      <h2 class="text-zinc-100 font-bold text-lg mt-3">Ranjeet Gupta</h2>
+      <p class="text-zinc-500 text-xs font-semibold uppercase tracking-wider mt-1">AI Engineer</p>
+
+      <!-- Social Media Handles (Placed below AI Engineer, no NIT JSR) -->
+      <div class="flex items-center justify-center gap-2 mt-3 w-full">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/ranjeet-gupta-9a705827b/" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-blue-700 hover:text-white flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="LinkedIn">
+          <i class="fa-brands fa-linkedin-in text-xs"></i>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/ranjeet258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-zinc-100 hover:text-zinc-950 flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="GitHub">
+          <i class="fa-brands fa-github text-xs"></i>
+        </a>
+        <!-- Medium -->
+        <a href="https://medium.com/@ranjeetkrgupta258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-zinc-100 hover:text-zinc-950 flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="Medium">
+          <i class="fa-brands fa-medium text-xs"></i>
+        </a>
+        <!-- Kaggle -->
+        <a href="https://www.kaggle.com/ranjeet258" target="_blank" class="w-8 h-8 rounded-full bg-zinc-800/40 hover:bg-blue-400 hover:text-white flex items-center justify-center text-zinc-400 border border-zinc-800/40 transition-all duration-300 hover:scale-110 active:scale-95" title="Kaggle">
+          <i class="fa-brands fa-kaggle text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Divider -->
+      <div class="w-full h-px bg-zinc-800/40 my-4"></div>
+    </div>
+
+    <!-- Navigation Menu (Dropdown item removed) -->
+    <nav id="navmenu" class="navmenu w-full flex-1">
+      <ul class="space-y-1 list-none p-0 m-0">
+        <li>
+          <a href="#hero" class="active group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-house text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-user text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">About</span>
+          </a>
+        </li>
+        <li>
+          <a href="#resume" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-file-invoice text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Experience</span>
+          </a>
+        </li>
+        <li>
+          <a href="#portfolio" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-image text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Projects</span>
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="group flex items-center gap-3 px-4 py-2 rounded-xl border-l-2 border-transparent text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40 transition-all duration-300">
+            <i class="fas fa-envelope text-zinc-500 group-hover:text-violet-400 text-lg w-6 transition-colors duration-300"></i>
+            <span class="font-medium text-sm">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Bottom Part: Status / Copyright -->
+    <div class="w-full flex flex-col gap-2.5 mt-auto">
+      <div class="w-full h-px bg-zinc-800/40 mb-1"></div>
+      <div class="flex items-center justify-between px-2 w-full">
+        <div class="flex items-center gap-2">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span class="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase">Open for Roles</span>
+        </div>
+        <span class="text-[9px] bg-zinc-800 text-zinc-500 px-2 py-0.5 rounded-full font-mono">v1.0.0</span>
+      </div>
+      
+      <!-- Theme Toggle Switch -->
+      <div class="flex items-center justify-between px-2 w-full mt-1 border-t border-zinc-800/40 pt-2.5">
+        <span class="text-[10px] text-zinc-500 font-semibold tracking-wider uppercase">Theme</span>
+        <button id="theme-toggle" class="btn btn-sm text-zinc-400 hover:text-zinc-100 focus:outline-none p-1 border-0 bg-transparent cursor-pointer" title="Toggle Light/Dark Mode">
+          <i class="bi bi-moon-fill text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <section id="gargs-details" class="section pt-5">
+      <div class="container mx-auto px-4" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto bg-zinc-900/60 border border-zinc-800/80 rounded-3xl p-6 md:p-10 shadow-xl">
+          <a href="index.html#resume" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm font-medium mb-6 transition-colors">
+            <i class="bi bi-arrow-left"></i> Back to Resume
+          </a>
+          
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Gargs Engineering Limited <span class="text-zinc-500">— Manufacturing Cost Analysis Internship</span></h2>
+          
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">SQL</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Python</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Pandas</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Power BI</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Excel</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Statistics</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Data Analysis</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">EDA</span>
+            <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-mono rounded-full border border-blue-500/20">Data Visualization</span>
+          </div>
+
+          <div class="space-y-8 text-zinc-300">
+            <div>
+              <h3 class="text-xl font-bold text-zinc-100 mb-3 flex items-center gap-2"><i class="bi bi-info-circle text-blue-500"></i> Overview</h3>
+              <p class="leading-relaxed">Worked with manufacturing data from the backhoe bucket production process to analyze raw material consumption, production costs, and operational efficiency. The objective was to identify cost drivers and recommend data-driven improvements to optimize manufacturing performance.</p>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-bold text-zinc-100 mb-3 flex items-center gap-2"><i class="bi bi-tools text-emerald-500"></i> What I Did</h3>
+              <ul class="list-disc list-inside space-y-2 leading-relaxed ml-2">
+                <li>Collected, cleaned, and analyzed manufacturing and material cost data.</li>
+                <li>Used SQL to query production data and Excel for data cleaning and analysis.</li>
+                <li>Built Power BI dashboards to visualize material consumption, production costs, and key performance metrics.</li>
+                <li>Performed exploratory data analysis (EDA) to identify trends, inefficiencies, and opportunities for process improvement.</li>
+                <li>Collaborated with the engineering team to evaluate material utilization and production workflows.</li>
+              </ul>
+            </div>
+
+            <div class="bg-blue-900/20 border border-blue-500/30 rounded-2xl p-6">
+              <h3 class="text-lg font-bold text-blue-300 mb-2"><i class="bi bi-graph-up-arrow"></i> Key Results</h3>
+              <ul class="list-disc list-inside space-y-2 leading-relaxed text-blue-100 ml-2 mb-0">
+                <li>Identified major cost drivers affecting backhoe bucket manufacturing.</li>
+                <li>Provided data-driven recommendations to improve material utilization and production efficiency.</li>
+                <li>Contributed to initiatives that resulted in an <strong class="text-white">8% reduction</strong> in manufacturing costs.</li>
+                <li>Developed interactive dashboards that enabled stakeholders to monitor production and cost-related KPIs more effectively.</li>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
