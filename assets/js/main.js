@@ -268,19 +268,11 @@
   const chatLauncherIcon = document.querySelector('#chat-launcher i');
   const chatWindow = document.querySelector('#chat-window');
   
+
   // Views
-  const chatHomeView = document.querySelector('#chat-home-view');
   const chatConvView = document.querySelector('#chat-conv-view');
   
-  // View 1 (Home) Buttons
-  const btnStartChat = document.querySelector('#btn-start-chat');
-  const btnSendMsg = document.querySelector('#btn-send-msg');
-  const btnViewSkills = document.querySelector('#btn-view-skills');
-  const btnViewProjects = document.querySelector('#btn-view-projects');
-  const closeChatHome = document.querySelector('#close-chat-home');
-  
   // View 2 (Conversation) Buttons
-  const chatBack = document.querySelector('#chat-back');
   const closeChatConv = document.querySelector('#close-chat-conv');
   
   // Chat inputs / messages
@@ -308,78 +300,16 @@
         chatWindow.classList.remove('hidden');
         chatWindow.classList.add('flex');
         chatLauncherIcon.classList.replace('bi-chat-dots-fill', 'bi-x-lg');
-        
-        // Always open to Support Home Screen initially
-        if (chatHomeView && chatConvView) {
-          chatHomeView.classList.remove('hidden');
-          chatHomeView.classList.add('flex');
-          chatConvView.classList.remove('flex');
-          chatConvView.classList.add('hidden');
-        }
       } else {
         closeChatbot();
       }
     });
   }
 
-  // Close buttons bindings
-  if (closeChatHome) {
-    closeChatHome.addEventListener('click', closeChatbot);
-  }
   if (closeChatConv) {
     closeChatConv.addEventListener('click', closeChatbot);
   }
 
-  // Back button binding (Conv View -> Home View)
-  if (chatBack && chatHomeView && chatConvView) {
-    chatBack.addEventListener('click', () => {
-      chatConvView.classList.remove('flex');
-      chatConvView.classList.add('hidden');
-      chatHomeView.classList.remove('hidden');
-      chatHomeView.classList.add('flex');
-    });
-  }
-
-  // Transition to Chat View
-  if (btnStartChat && chatHomeView && chatConvView) {
-    btnStartChat.addEventListener('click', () => {
-      chatHomeView.classList.remove('flex');
-      chatHomeView.classList.add('hidden');
-      chatConvView.classList.remove('hidden');
-      chatConvView.classList.add('flex');
-      if (chatInput) {
-        chatInput.focus();
-      }
-    });
-  }
-
-  // Helper for scroll shortcuts
-  function scrollShortcut(selector) {
-    closeChatbot();
-    const target = document.querySelector(selector);
-    if (target) {
-      setTimeout(() => {
-        const scrollMarginTop = getComputedStyle(target).scrollMarginTop;
-        window.scrollTo({
-          top: target.offsetTop - parseInt(scrollMarginTop || 0),
-          behavior: 'smooth'
-        });
-      }, 150); // slight delay so the widget transition finishes smoothly
-    }
-  }
-
-  // Bind scrolling shortcuts
-  if (btnSendMsg) {
-    btnSendMsg.addEventListener('click', () => scrollShortcut('#contact'));
-  }
-  if (btnViewSkills) {
-    btnViewSkills.addEventListener('click', () => scrollShortcut('#skills'));
-  }
-  if (btnViewProjects) {
-    btnViewProjects.addEventListener('click', () => scrollShortcut('#portfolio'));
-  }
-
-  // Handle message sending
   function appendMessage(sender, text) {
     if (!chatMessages) return;
     const msgDiv = document.createElement('div');
@@ -405,44 +335,123 @@
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
+
+  let supportStepNum = 1;
+  let supportData = { name: '', email: '', subject: '', message: '' };
+
+  function showTyping() {
+    if (typingIndicator) {
+      typingIndicator.classList.remove('hidden');
+      typingIndicator.classList.add('d-flex');
+    }
+  }
+
+  function hideTyping() {
+    if (typingIndicator) {
+      typingIndicator.classList.remove('d-flex');
+      typingIndicator.classList.add('hidden');
+    }
+  }
+
   function handleSend() {
     if (!chatInput) return;
     const text = chatInput.value.trim();
     if (!text) return;
 
-    appendMessage('user', text);
-    chatInput.value = '';
-
-    // Show typing indicator
-    if (typingIndicator) {
-      typingIndicator.classList.remove('hidden');
-      typingIndicator.classList.add('d-flex');
-    }
-
-    // Mock answer generation (simulate delay)
-    setTimeout(() => {
-      if (typingIndicator) {
-        typingIndicator.classList.remove('d-flex');
-        typingIndicator.classList.add('hidden');
+    if (supportStepNum === 1) {
+      if (text.length < 2) {
+        appendMessage('bot', "Please enter a valid name (at least 2 characters).");
+        return;
       }
-
-      // Generate context-aware mock responses based on keywords
-      let reply = "That's a great question! Ranjeet has built the front-end layout for this chatbot. You can easily connect a RAG backend pipeline here to answer detailed queries from a custom knowledge base about him.";
-      const query = text.toLowerCase();
+      supportData.name = text;
+      appendMessage('user', text);
+      chatInput.value = '';
+      supportStepNum = 2;
+      chatInput.placeholder = "Type your email...";
       
-      if (query.includes('project') || query.includes('patent')) {
-        reply = "Ranjeet has worked on several advanced projects and patents. These include a Multimodal AI System (integrating computer vision and speech recognition), a Locomotion Control System, and a Cost Analytics Dashboard. You can see details of these under the 'Projects' section!";
-      } else if (query.includes('skill') || query.includes('tech') || query.includes('language')) {
-        reply = "Ranjeet is highly skilled in Python, SQL, PyTorch, TensorFlow, MLOps (Docker, Kubernetes), Generative AI (LangChain, LangGraph), and Data Engineering. Check out the 'Skills' section on the page to see them grouped in detail!";
-      } else if (query.includes('education') || query.includes('college') || query.includes('study') || query.includes('nit')) {
-        reply = "Ranjeet is currently pursuing a Bachelor of Technology in AI and Data Science at the National Institute of Technology, Jamshedpur (Graduation: June 2027). He also holds stellar academic marks in JAC Ranchi and JAC Barhi.";
-      } else if (query.includes('experience') || query.includes('intern') || query.includes('work')) {
-        reply = "Ranjeet has experience as a Research Intern at IIT Hyderabad (working on data-driven locomotion modeling) and as a Data Analyst Intern at Gargs Engineering Limited. He is also the Co-Founder of the AI and Automation Club at NIT JSR.";
-      }
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        appendMessage('bot', `Nice to meet you, ${supportData.name}! What is your email address so I can reply to you?`);
+      }, 1000);
 
-      appendMessage('bot', reply);
-    }, 1200);
+    } else if (supportStepNum === 2) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(text)) {
+        appendMessage('bot', "Please enter a valid email address (e.g. name@example.com).");
+        return;
+      }
+      supportData.email = text;
+      appendMessage('user', text);
+      chatInput.value = '';
+      supportStepNum = 3;
+      chatInput.placeholder = "Type subject...";
+      
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        appendMessage('bot', "Got it. What is the subject or purpose of your message?");
+      }, 1000);
+
+    } else if (supportStepNum === 3) {
+      if (text.length < 3) {
+        appendMessage('bot', "Please enter a subject (at least 3 characters).");
+        return;
+      }
+      supportData.subject = text;
+      appendMessage('user', text);
+      chatInput.value = '';
+      supportStepNum = 4;
+      chatInput.placeholder = "Type your message...";
+      
+      showTyping();
+      setTimeout(() => {
+        hideTyping();
+        appendMessage('bot', "Perfect. Go ahead and type the message you'd like to send to me.");
+      }, 1000);
+
+    } else if (supportStepNum === 4) {
+      supportData.message = text;
+      appendMessage('user', text);
+      chatInput.value = '';
+      chatInput.disabled = true;
+      if (sendChat) sendChat.disabled = true;
+      chatInput.placeholder = "Sending message...";
+
+      showTyping();
+
+      const formData = {
+        access_key: "2ef2f9d9-8993-488b-9f63-6d4745324ffc",
+        name: supportData.name,
+        email: supportData.email,
+        subject: supportData.subject,
+        message: supportData.message
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        hideTyping();
+        if (data.success) {
+          appendMessage('bot', `Thank you! Your message has been sent successfully. I will get in touch with you at <strong>${supportData.email}</strong>. Have a great day!`);
+        } else {
+          appendMessage('bot', `Oops! Something went wrong while sending your message. Please try again later.`);
+        }
+      })
+      .catch(err => {
+        hideTyping();
+        appendMessage('bot', `Oops! A network error occurred while sending your message. Please try again later.`);
+      });
+    }
   }
+
 
   if (chatInput) {
     chatInput.addEventListener('keydown', (e) => {
