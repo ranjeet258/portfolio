@@ -49,6 +49,8 @@ ALLOWED_ORIGINS = [o.strip() for o in os.getenv(
     "ALLOWED_ORIGINS",
     "https://ranjeet258.github.io,http://localhost:5500,http://127.0.0.1:5500,http://localhost:8000,http://127.0.0.1:8000,null",
 ).split(",") if o.strip()]
+# Also allow Vercel deployments (production + preview URLs).
+ALLOWED_ORIGIN_REGEX = os.getenv("ALLOWED_ORIGIN_REGEX", r"https://[a-z0-9-]+\.vercel\.app")
 
 TOP_K = 5
 CHUNK_CHARS = 800
@@ -208,6 +210,7 @@ app = FastAPI(title="Portfolio RAG", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
+    allow_origin_regex=ALLOWED_ORIGIN_REGEX or None,
     allow_methods=["POST", "GET"],
     allow_headers=["Content-Type"],
 )
