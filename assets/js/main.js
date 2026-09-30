@@ -688,7 +688,7 @@
 
   // RAG backend (rag-backend/). Uses the local server while developing.
   const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
-  const CHAT_API_URL = isLocal ? 'http://localhost:7860' : 'https://ranjeet258-portfolio-rag.hf.space';
+  const CHAT_API_URL = isLocal ? 'http://localhost:7860' : 'https://portfolio-a8ne.onrender.com';
   const CHAT_FALLBACK = "Sorry, I couldn't reach the assistant right now. Please use the Contact section or email ranjeetgupta.work@gmail.com.";
 
   const heroHistory = [];
