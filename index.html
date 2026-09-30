@@ -26,6 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/fx.css" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -62,7 +63,7 @@
     }
   </script>
 
-  <header id="header" class="header">
+  <header id="header" class="header" data-lenis-prevent>
     <i class="header-toggle d-xl-none bi bi-list"></i>
 
     <!-- Profile Section -->
@@ -168,16 +169,21 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background relative flex flex-col justify-center items-center min-h-screen transition-all duration-500">
 
-      <!-- Chat Messages Container (Hidden initially) -->
-      <div id="hero-chat-messages" class="hidden w-full max-w-4xl mx-auto flex-1 overflow-y-auto px-4 pb-4 mt-6 pt-4 flex-col gap-6 z-10 relative" style="scrollbar-width: none;"></div>
+      <!-- Particle background + mouse spotlight (assets/js/fx.js) -->
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-spotlight" aria-hidden="true"></div>
 
-      <div id="hero-intro" class="container text-center transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+      <!-- Chat Messages Container (Hidden initially) -->
+      <div id="hero-chat-messages" data-lenis-prevent class="hidden w-full max-w-4xl mx-auto flex-1 overflow-y-auto px-4 pb-4 mt-6 pt-4 flex-col gap-6 z-10 relative" style="scrollbar-width: none;"></div>
+
+      <div id="hero-intro" class="container text-center">
+        <span class="hero-eyebrow"><span class="dot"></span>Open to AI / ML roles</span>
         <h2>Ranjeet Gupta</h2>
-        <p>I'm <span class="typed" data-typed-items="AI Engineer, Machine Learning Engineer, Data Scientist, MLOps Specialist">AI Engineer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        <p>I'm <span class="typed" data-typed-items="AI Engineer, Machine Learning Engineer, Data Scientist, MLOps Specialist">AI Engineer</span></p>
       </div>
         
       <!-- Central Chat Input Box -->
-      <div id="hero-input-container" class="mt-10 max-w-[830px] mx-auto w-full px-4 relative z-10 transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+      <div id="hero-input-container" class="mt-10 max-w-[830px] mx-auto w-full px-4 relative z-10">
         <div id="hero-chat-wrapper" class="bg-[#1e1f20] rounded-[32px] p-2 pr-3 pl-6 flex items-end min-h-[60px] border border-zinc-800/50 shadow-sm transition-all duration-300">
           <textarea id="hero-chat-input" rows="1" placeholder="Ask me anything..." class="w-full bg-transparent border-0 text-zinc-200 py-3 focus:outline-none placeholder-zinc-500 text-base resize-none leading-relaxed" style="max-height: 200px; scrollbar-width: none;"></textarea>
           <button id="hero-chat-send" class="w-10 h-10 rounded-full hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 flex items-center justify-center transition-all duration-300 ml-2 shrink-0 mb-1" title="Send">
@@ -189,7 +195,36 @@
         </div>
       </div>
 
+      <a href="#about" id="hero-scroll" aria-label="Scroll to About">
+        <span class="mouse"></span>
+        <span>Scroll</span>
+      </a>
+
     </section><!-- /Hero Section -->
+
+    <!-- Skills Marquee -->
+    <section class="fx-marquee" aria-label="Skills">
+      <div class="fx-marquee-row">
+        <div class="fx-marquee-track">
+          <span class="fx-marquee-item is-solid">Machine Learning</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item">Generative AI</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item is-solid">LLMs &amp; RAG</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item">Computer Vision</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item is-solid">Agentic AI</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item">MLOps</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+        </div>
+      </div>
+      <div class="fx-marquee-row">
+        <div class="fx-marquee-track">
+          <span class="fx-marquee-item">PyTorch</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item is-solid">LangGraph</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item">Hugging Face</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item is-solid">QLoRA</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item">FastAPI</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+          <span class="fx-marquee-item is-solid">Docker &amp; K8s</span><svg class="fx-marquee-sep" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+        </div>
+      </div>
+    </section><!-- /Skills Marquee -->
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -368,6 +403,26 @@
 
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
 
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai page-1">
+              <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group h-100">
+                <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
+                  <img src="assets/img/portfolio/agentkart.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="AgentKart">
+                  <div class="portfolio-info">
+                    <a href="assets/img/portfolio/agentkart.png" title="AgentKart: Autonomous AI Workforce Platform" data-gallery="portfolio-gallery-agentic-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                    <a href="https://github.com/ranjeet258/AgentKart" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
+                <div class="mt-auto flex-grow-1">
+                  <h4 class="text-white font-bold text-lg mb-2 group-hover:text-violet-300 transition-colors">AgentKart <span class="text-xs font-medium text-violet-400">(ongoing)</span></h4>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-2">An autonomous AI workforce platform to hire, orchestrate, and manage AI agents like human talent. A "CEO Agent" breaks down goals and routes sub-tasks to specialized Sales, Marketing, and Support agents.</p>
+                  <p class="text-sm text-zinc-400 leading-relaxed mb-2">AI matching engine routes natural-language goals to the right agent via LangChain, Qdrant, and Neo4j, with Temporal.io for durable long-running execution.</p>
+                  <div class="text-sm text-zinc-400 leading-relaxed mb-0 border-t border-zinc-800/60 pt-2 mt-2">
+                    <span class="font-bold text-violet-300">Tech Stack:</span> Next.js, NestJS, FastAPI, Prisma, PostgreSQL, Qdrant, Neo4j, Temporal, Docker.
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Portfolio Item -->
+
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-adv-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group h-100">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
@@ -467,7 +522,7 @@
               </div>
             </div><!-- End Portfolio Item -->
 
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml-dl page-1">
+            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml-dl page-2">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
                   <img src="assets/img/portfolio/Recommender-system-for-movie.jpg" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Movie Recommender System">
@@ -686,7 +741,7 @@
               </div>
 
               <!-- Message History Panel -->
-              <div id="contact-chat-messages" class="flex-1 overflow-y-auto space-y-3 p-1 flex flex-col text-xs" style="scrollbar-width: none;">
+              <div id="contact-chat-messages" data-lenis-prevent class="flex-1 overflow-y-auto space-y-3 p-1 flex flex-col text-xs" style="scrollbar-width: none;">
                 <!-- Initial Greeting -->
                 <div class="chat-msg bot-msg d-flex align-items-start gap-2">
                   <div class="w-7 h-7 rounded-full bg-zinc-800/80 border border-zinc-700 flex items-center justify-center text-[10px] text-violet-400 font-bold shrink-0">AI</div>
@@ -738,7 +793,11 @@
 
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  <div id="preloader">
+    <span class="pl-name">Ranjeet Gupta</span>
+    <span class="pl-count">0</span>
+    <span class="pl-bar"></span>
+  </div>
 
 
   <!-- Floating Chatbot Widget -->
@@ -768,7 +827,7 @@
         </div>
 
         <!-- Chat Messages List -->
-        <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-3 flex flex-col text-xs" style="scrollbar-width: none;">
+        <div id="chat-messages" data-lenis-prevent class="flex-1 p-3 overflow-y-auto space-y-3 flex flex-col text-xs" style="scrollbar-width: none;">
           <!-- Bot Greeting Message -->
           <div class="chat-msg bot-msg d-flex align-items-start gap-2">
             <div class="w-7 h-7 rounded-full bg-zinc-900/60 border border-zinc-800 flex items-center justify-center text-[10px] text-violet-400 font-bold shrink-0">AI</div>
@@ -815,8 +874,10 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
+
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/fx.js"></script>
 
 </body>
 

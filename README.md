@@ -18,6 +18,9 @@ I am an AI Engineer & Data Scientist specializing in Machine Learning, Deep Lear
 - HTML5
 - CSS3
 - JavaScript
+- GSAP + ScrollTrigger (animations, preloader, marquee)
+- Lenis (smooth scrolling)
+- Three.js / WebGL (interactive particle hero)
 - Responsive Design Principles
 
 ## Contact

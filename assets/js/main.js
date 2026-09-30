@@ -71,7 +71,12 @@
   const preloader = document.querySelector('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
-      preloader.remove();
+      // fx.js plays the animated intro when it's available
+      if (typeof window.fxIntro === 'function') {
+        window.fxIntro(preloader);
+      } else {
+        preloader.remove();
+      }
     });
   }
 
@@ -681,67 +686,86 @@
     }
   }
 
-  // Append message to hero chat
-  function appendHeroChatMsg(sender, text, stream = false) {
-    if (!heroChatMessages) return;
+  // RAG backend (rag-backend/). Uses the local server while developing.
+  const isLocal = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
+  const CHAT_API_URL = isLocal ? 'http://localhost:7860' : 'https://ranjeet258-portfolio-rag.hf.space';
+  const CHAT_FALLBACK = "Sorry, I couldn't reach the assistant right now. Please use the Contact section or email ranjeetgupta.work@gmail.com.";
+
+  const heroHistory = [];
+  let heroChatBusy = false;
+
+  // Append message to hero chat; returns the text element so replies can stream into it
+  function appendHeroChatMsg(sender, text = '') {
+    if (!heroChatMessages) return null;
     const msgDiv = document.createElement('div');
     msgDiv.classList.add('flex', 'gap-4');
-    
+    const textEl = document.createElement('div');
+
     if (sender === 'user') {
       msgDiv.classList.add('flex-row-reverse');
-      msgDiv.innerHTML = `
-        <div class="bg-[#1e1f20] px-5 py-3 rounded-3xl rounded-tr-sm text-zinc-200 text-base max-w-[85%] leading-relaxed whitespace-pre-wrap shadow-sm break-words">${text}</div>
-      `;
-      heroChatMessages.appendChild(msgDiv);
-      heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+      textEl.className = 'bg-[#1e1f20] px-5 py-3 rounded-3xl rounded-tr-sm text-zinc-200 text-base max-w-[85%] leading-relaxed whitespace-pre-wrap shadow-sm break-words';
     } else {
-      msgDiv.innerHTML = `
-        <div class="flex-1 text-zinc-200 text-base leading-relaxed max-w-[100%] whitespace-pre-wrap pt-1 bot-text-content">
-        </div>
-      `;
-      heroChatMessages.appendChild(msgDiv);
-      
-      const textContainer = msgDiv.querySelector('.bot-text-content');
-      
-      if (stream) {
-        let i = 0;
-        const words = text.split(' ');
-        const interval = setInterval(() => {
-          if (i < words.length) {
-            textContainer.textContent += (i > 0 ? ' ' : '') + words[i];
-            heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
-            i++;
-          } else {
-            clearInterval(interval);
-          }
-        }, 40); // 40ms per word simulates Gemini's streaming speed
-      } else {
-        textContainer.textContent = text;
-        heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
-      }
+      textEl.className = 'flex-1 text-zinc-200 text-base leading-relaxed max-w-[100%] whitespace-pre-wrap pt-1 bot-text-content';
     }
+    textEl.textContent = text;
+
+    msgDiv.appendChild(textEl);
+    heroChatMessages.appendChild(msgDiv);
+    heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+    return textEl;
   }
 
-  // Handle Hero Chat Send
-  function handleHeroChatSend(textOverride = null) {
-    const text = textOverride !== null ? textOverride : (heroChatInput ? heroChatInput.value.trim() : '');
-    if (!text) return;
+  // Handle Hero Chat Send: stream the answer from the RAG backend
+  async function handleHeroChatSend(textOverride = null) {
+    const text = (textOverride !== null ? textOverride : (heroChatInput ? heroChatInput.value : '')).trim();
+    if (!text || heroChatBusy) return;
 
     if (!textOverride && heroChatInput) {
       heroChatInput.value = '';
     }
 
     appendHeroChatMsg('user', text);
-    
-    if (heroChatMessages) {
-      heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+    const replyEl = appendHeroChatMsg('bot', '…');
+    heroChatBusy = true;
+    if (heroChatSend) heroChatSend.disabled = true;
+
+    let reply = '';
+    try {
+      const res = await fetch(`${CHAT_API_URL}/api/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text.slice(0, 1000), history: heroHistory.slice(-12) })
+      });
+
+      if (res.status === 429) {
+        reply = "You've sent a lot of messages in a short time. Please try again in a few minutes.";
+      } else if (!res.ok || !res.body) {
+        throw new Error(`HTTP ${res.status}`);
+      } else {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          reply += decoder.decode(value, { stream: true });
+          replyEl.textContent = reply;
+          heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+        }
+      }
+    } catch (err) {
+      console.error('Chat request failed:', err);
+      reply = '';
     }
 
-    // Mock Response
-    setTimeout(() => {
-      let reply = "I am currently building the AI brain for this chatbot. Until it's ready, please head over to the Contact section in the sidebar to send me a real message!";
-      appendHeroChatMsg('bot', reply, true);
-    }, 400); // Reduced delay to mimic fast time-to-first-token
+    if (!reply.trim()) reply = CHAT_FALLBACK;
+    replyEl.textContent = reply;
+    heroChatMessages.scrollTop = heroChatMessages.scrollHeight;
+
+    if (reply !== CHAT_FALLBACK) {
+      heroHistory.push({ role: 'user', content: text }, { role: 'assistant', content: reply.slice(0, 2000) });
+    }
+    heroChatBusy = false;
+    if (heroChatSend) heroChatSend.disabled = false;
   }
 
   // Listeners for Hero Chat Input

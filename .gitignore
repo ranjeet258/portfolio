@@ -1,0 +1,13 @@
+# Secrets
+.env
+rag-backend/.env
+
+# Private documents for the chat assistant (CV, transcripts, etc.).
+# Only the public profile summary is committed.
+rag-backend/knowledge/*
+!rag-backend/knowledge/profile.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
