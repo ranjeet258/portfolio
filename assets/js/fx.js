@@ -8,7 +8,7 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /**
-   * Preloader intro (called by main.js on window load)
+   * Preloader intro (called by main.js as soon as the DOM is ready)
    */
   window.fxIntro = function(preloader) {
     const count = preloader.querySelector('.pl-count');

@@ -9,51 +9,31 @@
   <meta content="Ranjeet Gupta, AI Engineer, Machine Learning, Deep Learning, MLOps, Data Scientist, NIT Jamshedpur" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/my-profile-img.jpg" rel="icon" type="image/jpeg">
+  <link href="assets/img/my-profile-img.jpg" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Poppins:wght@400;500;600;700&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link href="assets/css/fx.css" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      corePlugins: {
-        preflight: false,
-      }
-    }
-  </script>
-  <!-- FontAwesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    /* Styling for active links added by Scrollspy */
-    .navmenu ul li a.active {
-      color: #f4f4f5 !important; /* text-zinc-100 */
-      background-color: rgba(39, 39, 42, 0.4) !important; /* bg-zinc-800/40 */
-      border-left-color: #8b5cf6 !important; /* border-violet-500 */
-    }
-    .navmenu ul li a.active i {
-      color: #a78bfa !important; /* text-violet-400 */
-    }
-    .navmenu ul li a.active span {
-      color: #f4f4f5 !important;
-    }
-  </style>
+  <!-- Font Awesome (sidebar icons): loaded without blocking first paint -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+  <!-- Tailwind utilities, precompiled (see tailwind.config.js). Keep last so utilities win. -->
+  <link href="assets/css/tailwind.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -71,7 +51,7 @@
       <!-- Profile Picture Container -->
       <div class="relative group mt-1">
         <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-40 group-hover:opacity-75 transition duration-500"></div>
-        <img class="relative w-20 h-20 rounded-full object-cover border-2 border-zinc-800" src="assets/img/my-profile-img.jpg" alt="Ranjeet Gupta">
+        <img class="relative w-20 h-20 rounded-full object-cover border-2 border-zinc-800" src="assets/img/my-profile-img.jpg" alt="Ranjeet Gupta" width="80" height="80" decoding="async">
         <span class="absolute bottom-0 right-1 w-4 h-4 bg-emerald-500 border-2 border-[#111111] rounded-full"></span>
       </div>
       
@@ -448,7 +428,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group h-100">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/agentkart.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="AgentKart">
+                  <img src="assets/img/portfolio/agentkart.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="AgentKart">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/agentkart.png" title="AgentKart: Autonomous AI Workforce Platform" data-gallery="portfolio-gallery-agentic-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/AgentKart" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -468,7 +448,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-adv-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group h-100">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/PaperTunnedLLM.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="PaperTunedLLM">
+                  <img src="assets/img/portfolio/PaperTunnedLLM.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="PaperTunedLLM">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/PaperTunnedLLM.png" title="PaperTunedLLM" data-gallery="portfolio-gallery-adv-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/PaperTunedLLM" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -488,7 +468,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml-dl page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Vehicle_Pipeline.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Vehicle Insurance Pipeline">
+                  <img src="assets/img/portfolio/Vehicle_Pipeline.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Vehicle Insurance Pipeline">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Vehicle_Pipeline.png" title="Vehicle Insurance Pipeline" data-gallery="portfolio-gallery-ml-dl" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/MLops-Vehicle-Insurance-Pipeline" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -507,7 +487,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/BusinessIQ.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="BusinessIQ Platform">
+                  <img src="assets/img/portfolio/BusinessIQ.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="BusinessIQ Platform">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/BusinessIQ.png" title="BusinessIQ: Agentic AI Platform" data-gallery="portfolio-gallery-agentic-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/BusinessIQ.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -527,7 +507,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-adv-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Foundation_reconstruction.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Foundation Models for Event Reconstruction">
+                  <img src="assets/img/portfolio/Foundation_reconstruction.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Foundation Models for Event Reconstruction">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Foundation_reconstruction.png" title="Foundation Models for Event Reconstruction" data-gallery="portfolio-gallery-adv-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/Specific-Tasks-2a-FM-for-E2E-EventReconstruction" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -547,7 +527,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-adv-ai page-1">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Super_Resolution_architecture.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="CMS Detector Super-Resolution">
+                  <img src="assets/img/portfolio/Super_Resolution_architecture.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="CMS Detector Super-Resolution">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Super_Resolution_architecture.png" title="CMS Detector Super-Resolution" data-gallery="portfolio-gallery-adv-ai" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/Specific-Tasks-2b-Super-resolution-at-the-CMS-detector" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -567,7 +547,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ml-dl page-2">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Recommender-system-for-movie.jpg" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Movie Recommender System">
+                  <img src="assets/img/portfolio/Recommender-system-for-movie.jpg" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Movie Recommender System">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Recommender-system-for-movie.jpg" title="Movie Recommender System" data-gallery="portfolio-gallery-ml-dl" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/Movie-Recommender-System" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -586,7 +566,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-agentic-ai filter-ml-dl page-2">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Robotic-Head.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Multimodal AI Perception System">
+                  <img src="assets/img/portfolio/Robotic-Head.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Multimodal AI Perception System">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Robotic-Head.png" title="Multimodal AI System" data-gallery="portfolio-gallery-ml-dl" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="#" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -605,7 +585,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-data-analysis page-2">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Car_Data_analysis.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Used Car Sales Data Analysis">
+                  <img src="assets/img/portfolio/Car_Data_analysis.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Used Car Sales Data Analysis">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Car_Data_analysis.png" title="Car Sales Data Analysis" data-gallery="portfolio-gallery-data-analysis" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/Tableau_Used-Car-Analysis.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -627,7 +607,7 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-data-analysis page-2">
               <div class="p-4 bg-zinc-900/40 border border-zinc-800/60 rounded-2xl d-flex flex-column transition-all hover:border-violet-500/40 hover:bg-zinc-900/80 group" style="height: auto; min-height: 420px;">
                 <div class="portfolio-content rounded-xl overflow-hidden mb-4 relative flex-shrink-0 border border-zinc-800/60">
-                  <img src="assets/img/portfolio/Motorola_Sales_DashBoard.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" alt="Mobile Smartphone Sales Dashboard">
+                  <img src="assets/img/portfolio/Motorola_Sales_DashBoard.png" class="img-fluid w-100" style="height: 200px; object-fit: cover;" loading="lazy" decoding="async" alt="Mobile Smartphone Sales Dashboard">
                   <div class="portfolio-info">
                     <a href="assets/img/portfolio/Motorola_Sales_DashBoard.png" title="Mobile Sales Dashboard" data-gallery="portfolio-gallery-data-analysis" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                     <a href="https://github.com/ranjeet258/PowerBI_Motorola-Sales-Dashboard.git" target="_blank" title="GitHub Repository" class="details-link"><i class="bi bi-link-45deg"></i></a>
@@ -657,59 +637,6 @@
               </ul>
             </div>
           </div>
-
-          <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              const pageBtns = document.querySelectorAll('.page-btn');
-              const filterBtns = document.querySelectorAll('.isotope-filters li');
-              const paginationContainer = document.getElementById('portfolio-pagination');
-
-              pageBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                  pageBtns.forEach(b => {
-                    b.classList.remove('bg-violet-600', 'text-white');
-                    b.classList.add('text-zinc-400');
-                  });
-                  this.classList.add('bg-violet-600', 'text-white');
-                  this.classList.remove('text-zinc-400');
-
-                  let page = this.getAttribute('data-page');
-                  let isoContainer = document.querySelector('.isotope-container');
-                  if (isoContainer && window.Isotope) {
-                    let iso = window.Isotope.data(isoContainer);
-                    if (iso) {
-                      iso.arrange({ filter: '.page-' + page });
-                    }
-                  }
-
-                  filterBtns.forEach(b => b.classList.remove('filter-active'));
-                  filterBtns[0].classList.add('filter-active');
-                  filterBtns[0].setAttribute('data-filter', '.page-' + page);
-                });
-              });
-
-              filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                  let filterValue = this.getAttribute('data-filter');
-                  if (filterValue === '.page-1' || filterValue === '.page-2') {
-                    paginationContainer.style.display = 'block';
-                    let targetPage = filterValue.replace('.page-', '');
-                    pageBtns.forEach(b => {
-                      if (b.getAttribute('data-page') === targetPage) {
-                        b.classList.add('bg-violet-600', 'text-white');
-                        b.classList.remove('text-zinc-400');
-                      } else {
-                        b.classList.remove('bg-violet-600', 'text-white');
-                        b.classList.add('text-zinc-400');
-                      }
-                    });
-                  } else {
-                    paginationContainer.style.display = 'none';
-                  }
-                });
-              });
-            });
-          </script>
 
           </div>
         </div>
@@ -905,21 +832,14 @@
   </div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js" defer></script>
+  <script src="assets/vendor/typed.js/typed.umd.js" defer></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js" defer></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js" defer></script>
 
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/fx.js"></script>
+  <!-- Main JS Files -->
+  <script src="assets/js/fx.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 
 </body>
 

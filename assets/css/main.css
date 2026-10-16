@@ -1737,4 +1737,20 @@ body.light-theme #hero-chat-messages .bg-\[\#1e1f20\] {
   background-color: #f0f4f9 !important;
   color: #09090b !important;
 }
-
+
+/*--------------------------------------------------------------
+# Sidebar: active link set by the scrollspy
+--------------------------------------------------------------*/
+.navmenu ul li a.active {
+  color: #f4f4f5 !important; /* text-zinc-100 */
+  background-color: rgba(39, 39, 42, 0.4) !important; /* bg-zinc-800/40 */
+  border-left-color: #8b5cf6 !important; /* border-violet-500 */
+}
+
+.navmenu ul li a.active i {
+  color: #a78bfa !important; /* text-violet-400 */
+}
+
+.navmenu ul li a.active span {
+  color: #f4f4f5 !important;
+}

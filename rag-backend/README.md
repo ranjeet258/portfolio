@@ -8,30 +8,50 @@ app_port: 7860
 pinned: false
 ---
 
-# Portfolio RAG chat backend
+# Portfolio chat backend
 
-Answers recruiter questions on the portfolio site using only Ranjeet's professional documents.
+Answers recruiter questions on the portfolio site using only Ranjeet's professional profile.
 
-- **LLM:** `Qwen/Qwen3-Next-80B-A3B-Instruct` (fallback `Qwen/Qwen3-4B-Instruct-2507`) via Hugging Face Inference Providers
-- **Embeddings:** `BAAI/bge-small-en-v1.5` via HF Inference, in-memory cosine search
-- **Guardrails:** professional-topics-only system prompt, answers grounded in retrieved context, 20 msgs / 10 min per IP
+- **Knowledge:** the whole profile (CV + site content) is kept in code, in [`chat/knowledge.py`](chat/knowledge.py), and sent to the model in full. There is no document loading, embedding or vector search, so a question costs one upstream call and the server has nothing to index at startup.
+- **LLM:** `Qwen/Qwen3-Next-80B-A3B-Instruct` (fallback `Qwen/Qwen3-235B-A22B-Instruct-2507`) via Hugging Face Inference Providers. Any OpenAI-compatible API works — see `LLM_BASE_URL` below.
+- **Guardrails:** professional-topics-only system prompt, answers grounded in the profile, 20 msgs / 10 min per IP.
 
-## Where to put your documents
-
-Drop files into `knowledge/` — supported: `.pdf`, `.docx`, `.md`, `.txt`.
+## Layout
 
 ```
-rag-backend/knowledge/
-├── profile.md          # site summary (committed)
-├── Ranjeet_CV.pdf      # your CV
-├── certificates.docx   # anything else professional
-└── ...
+rag-backend/
+├── app.py              # FastAPI app: routes, CORS, request models
+└── chat/
+    ├── config.py       # settings (all overridable with env vars)
+    ├── knowledge.py    # the profile the assistant answers from  <- edit this
+    ├── prompt.py       # system prompt + message assembly
+    ├── llm.py          # streaming client with model fallback
+    ├── cache.py        # LRU cache for repeated standalone questions
+    └── rate_limit.py   # per-IP sliding-window limiter
 ```
 
-Everything in `knowledge/` except `profile.md` is git-ignored in the portfolio repo, so your CV isn't published on GitHub.
-Documents are indexed at startup — restart the server (or the Space) after adding files.
+## Updating what the assistant knows
 
-**Keeping documents private on Hugging Face:** a public Space's files are publicly browsable. To keep the CV private, upload the documents to a *private* HF dataset (e.g. `ranjeet258/portfolio-knowledge`) and set the `KNOWLEDGE_DATASET` variable on the Space; the server downloads them at startup using `HF_TOKEN`.
+Edit `PROFILE` in `chat/knowledge.py` and redeploy. Keep it factual and compact: all of it is sent with every question.
+
+## What keeps it fast
+
+- No retrieval hop: the profile is already in the prompt.
+- One pooled, keep-alive HTTP client, so consecutive messages reuse the provider connection.
+- `GET /health` (which the site calls on page load) also opens the provider connection, so the first question skips the TLS handshake — and on hosts that sleep when idle, it starts the wake-up before the visitor has typed anything.
+- Repeats of a standalone question are served from an in-memory cache without calling the model.
+- If a model is silent for 20 s or errors, the next one in `LLM_MODELS` is tried.
+
+## Configuration
+
+| Variable | Default | Purpose |
+| --- | --- | --- |
+| `HF_TOKEN` | – (required) | Fine-grained HF token with "Make calls to Inference Providers" permission. The account needs Inference Providers credits (PRO or pre-paid); without them every call returns `402`. |
+| `LLM_MODELS` | see above | Comma-separated, first is primary. Must be models the provider actually serves. |
+| `LLM_BASE_URL` | `https://router.huggingface.co/v1` | Point at any other OpenAI-compatible API. |
+| `LLM_API_KEY` | `HF_TOKEN` | Key for `LLM_BASE_URL` when it isn't Hugging Face. |
+| `ALLOWED_ORIGINS` | GitHub Pages + localhost | Comma-separated CORS origins. |
+| `ALLOWED_ORIGIN_REGEX` | `*.vercel.app` | Regex for additional origins. |
 
 ## Run locally
 
@@ -45,14 +65,11 @@ uvicorn app:app --port 7860 --reload
 
 Serve the site (e.g. `python -m http.server 5500` from the repo root) and open http://localhost:5500 — the chat uses `http://localhost:7860` automatically when the site runs on localhost.
 
-## Deploy to a Hugging Face Space (free)
+## Deploy
 
-1. Create a Space at https://huggingface.co/new-space — SDK **Docker**, name `portfolio-rag`.
-2. Push the contents of this `rag-backend/` folder to the Space repo (including your `knowledge/` files, or use `KNOWLEDGE_DATASET`).
-3. Space **Settings → Variables and secrets** → add secret `HF_TOKEN` (a *fine-grained* token with "Make calls to Inference Providers" permission, plus read access to the dataset if you use one).
-4. The API is then live at `https://<username>-portfolio-rag.hf.space`. Set `CHAT_API_URL` in `assets/js/main.js` to that URL if the username isn't `ranjeet258`.
+Any host that runs the Dockerfile (Render, a Hugging Face Docker Space, ...) works. Set `HF_TOKEN` as a secret. The site's `CHAT_API_URL` in `assets/js/main.js` must point at the deployed URL.
 
 ## API
 
 `POST /api/chat` — `{"message": "...", "history": [{"role": "user"|"assistant", "content": "..."}]}` → streamed plain text.
-`GET /health` — index size and models.
+`GET /health` — status and configured models.

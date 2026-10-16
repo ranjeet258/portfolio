@@ -2,10 +2,9 @@
 .env
 rag-backend/.env
 
-# Private documents for the chat assistant (CV, transcripts, etc.).
-# Only the public profile summary is committed.
-rag-backend/knowledge/*
-!rag-backend/knowledge/profile.md
+# Private source documents (CV, transcripts, etc.). The assistant no longer
+# reads these: what it knows lives in rag-backend/chat/knowledge.py.
+rag-backend/knowledge/
 
 # Python
 __pycache__/
