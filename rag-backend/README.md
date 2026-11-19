@@ -13,7 +13,7 @@ pinned: false
 Answers recruiter questions on the portfolio site using only Ranjeet's professional profile.
 
 - **Knowledge:** the whole profile (CV + site content) is kept in code, in [`chat/knowledge.py`](chat/knowledge.py), and sent to the model in full. There is no document loading, embedding or vector search, so a question costs one upstream call and the server has nothing to index at startup.
-- **LLM:** `grok-3-mini` (fallback `grok-3`) via xAI's OpenAI-compatible API. Any OpenAI-compatible API works — see `LLM_BASE_URL` below.
+- **LLM:** `openai/gpt-oss-20b` (fallback `openai/gpt-oss-120b`) via Groq's OpenAI-compatible API. Any OpenAI-compatible API works — see `LLM_BASE_URL` below.
 - **Guardrails:** professional-topics-only system prompt, answers grounded in the profile, 20 msgs / 10 min per IP.
 
 ## Layout
@@ -46,10 +46,10 @@ Edit `PROFILE` in `chat/knowledge.py` and redeploy. Keep it factual and compact:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `XAI_API_KEY` | – (required) | Your xAI/Grok API key. |
+| `GROQ_API_KEY` | – (required) | Your Groq API key. |
 | `LLM_MODELS` | see above | Comma-separated, first is primary. Must be models the provider actually serves. |
-| `LLM_BASE_URL` | `https://api.x.ai/v1` | Point at any other OpenAI-compatible API. |
-| `LLM_API_KEY` | `XAI_API_KEY` | Optional generic key fallback; `XAI_API_KEY` takes priority for Grok. |
+| `LLM_BASE_URL` | `https://api.groq.com/openai/v1` | Point at any other OpenAI-compatible API. |
+| `LLM_API_KEY` | `GROQ_API_KEY` | Optional generic key fallback. |
 | `ALLOWED_ORIGINS` | GitHub Pages + localhost | Comma-separated CORS origins. |
 | `ALLOWED_ORIGIN_REGEX` | `*.vercel.app` | Regex for additional origins. |
 
@@ -67,7 +67,7 @@ Serve the site (e.g. `python -m http.server 5500` from the repo root) and open h
 
 ## Deploy
 
-Any host that runs the Dockerfile (Render, a Hugging Face Docker Space, ...) works. Set `XAI_API_KEY` as a secret. The site's `CHAT_API_URL` in `assets/js/main.js` must point at the deployed URL.
+Any host that runs the Dockerfile (Render, a Hugging Face Docker Space, ...) works. Set `GROQ_API_KEY` as a secret. The site's `CHAT_API_URL` in `assets/js/main.js` must point at the deployed URL.
 
 ## API
 
