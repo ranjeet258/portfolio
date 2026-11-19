@@ -49,7 +49,7 @@ Edit `PROFILE` in `chat/knowledge.py` and redeploy. Keep it factual and compact:
 | `XAI_API_KEY` | – (required) | Your xAI/Grok API key. |
 | `LLM_MODELS` | see above | Comma-separated, first is primary. Must be models the provider actually serves. |
 | `LLM_BASE_URL` | `https://api.x.ai/v1` | Point at any other OpenAI-compatible API. |
-| `LLM_API_KEY` | `XAI_API_KEY` | Optional generic key override for `LLM_BASE_URL`. |
+| `LLM_API_KEY` | `XAI_API_KEY` | Optional generic key fallback; `XAI_API_KEY` takes priority for Grok. |
 | `ALLOWED_ORIGINS` | GitHub Pages + localhost | Comma-separated CORS origins. |
 | `ALLOWED_ORIGIN_REGEX` | `*.vercel.app` | Regex for additional origins. |
 

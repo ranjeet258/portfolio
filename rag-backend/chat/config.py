@@ -15,7 +15,7 @@ def _csv(name: str, default: str) -> list[str]:
 # LLM - any OpenAI-compatible chat completions API (Hugging Face router by default)
 # ---------------------------------------------------------------------------
 LLM_BASE_URL = os.getenv("LLM_BASE_URL", "https://api.x.ai/v1").rstrip("/")
-LLM_API_KEY = os.getenv("LLM_API_KEY") or os.getenv("XAI_API_KEY", "")
+LLM_API_KEY = os.getenv("XAI_API_KEY") or os.getenv("LLM_API_KEY", "")
 # First model is primary; the rest are tried in order if it fails.
 LLM_MODELS = _csv("LLM_MODELS", "grok-3-mini,grok-3")
 MAX_TOKENS = 450
